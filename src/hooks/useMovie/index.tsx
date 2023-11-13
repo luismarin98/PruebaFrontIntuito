@@ -7,7 +7,10 @@ const useMovie = () => {
   const [movieParam, setMovieParam] = useState<MovieRequest | undefined>();
   const [generoParam, setGeneroParam] = useState<string>("");
 
-  const query = `http://localhost:3000/movie`;
+  const query =
+    `http://localhost:3000/movie/${generoParam !== ''
+    ? `?genero=${generoParam}`
+    : ""}`;
 
   const runEditMovie = async () => {
     await axios
@@ -33,7 +36,7 @@ const useMovie = () => {
 
   const runFilterMovies = async () => {
     await axios
-      .get(`query/${generoParam !== "" ? `?genero=${generoParam}` : ""}`)
+      .get(query)
       .then((res) => {
         if (!res.data) return null;
         if (res.status === 304)
@@ -47,7 +50,7 @@ const useMovie = () => {
 
   const runDeleteMovie = async () => {
     await axios
-      .delete(query + `/${movieParam?.id}`)
+      .delete(query)
       .then((res) => {
         if (res.status === 200) return alert("Pelicula eliminada con exito");
       })
