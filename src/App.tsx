@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div>
+    <div className="m-2">
       <Navbar />
       <Routes>
         <Route path="/movies" element={<MovieContainer />} />

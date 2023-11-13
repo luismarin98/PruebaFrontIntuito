@@ -19,7 +19,7 @@ const FormMovie = () => {
   };
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 ">
       <button className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-lg p-2" onClick={handle_OpenCloseModal}>Nueva Pelicula</button>
       <button className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-lg p-2" onClick={handle_ShowMovies}>Mostrar Peliculas</button>
       <DialogComponent

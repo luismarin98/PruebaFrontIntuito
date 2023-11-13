@@ -19,7 +19,7 @@ const MovieContainer: FC = () => {
   return (
     <BillboardProvaider>
       <FormProvider {...movieMethods}>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center m-1">
           <FormMovie />
           <MoviesList />
         </div>

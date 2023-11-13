@@ -8,7 +8,7 @@ const DialogComponent = ({
   children,
 }: ModalRequest) => {
   return (
-    <Dialog open={isOpen} onClose={onClose}>
+    <Dialog open={isOpen} onClose={onClose} className="relative z-50">
       <Transition
         show={isOpen}
         enter="transition-opacity duration-75"
@@ -18,11 +18,15 @@ const DialogComponent = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
+        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-w-sm rounded bg-white">
-            <Dialog.Title>{title}</Dialog.Title>
-            <div>{children}</div>
-          </Dialog.Panel>
+          <div className="flex min-h-full items-center justify-center p-4">
+            <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
+              <Dialog.Title>{title}</Dialog.Title>
+              <div>{children}</div>
+            </Dialog.Panel>
+          </div>
         </div>
       </Transition>
     </Dialog>
