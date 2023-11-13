@@ -62,7 +62,7 @@ const MovieForm = () => {
   const { setMovieParam, runSaveMovie } = useContext(
     MovieContext
   ) as IMovieContext;
-  const { register, setValue, getValues } = useFormContext<MovieRequest>();
+  const { register, setValue, getValues, reset } = useFormContext<MovieRequest>();
 
   const [selectParam, setSelecParam] = useState<string>("");
 
@@ -79,6 +79,7 @@ const MovieForm = () => {
     if (!valueParams) return null;
     setMovieParam(valueParams);
     runSaveMovie();
+    reset()
   };
 
   return (
