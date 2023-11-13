@@ -4,7 +4,20 @@
   "room": [],
   "seat": [],
   "movie": [
-
+    {
+      "id": "3986750.618619439",
+      "name": "star trek",
+      "genero": "ciencia_ficcion",
+      "duracion": "234",
+      "edadPermitida": "16"
+    },
+    {
+      "id": "7931477.568437282",
+      "name": "La momia",
+      "genero": "horror",
+      "duracion": "240",
+      "edadPermitida": "18"
+    }
   ],
   "customer": []
 }

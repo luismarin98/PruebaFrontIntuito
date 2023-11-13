@@ -1,4 +1,4 @@
-import { useContext, useState, ChangeEvent, MouseEvent } from "react";
+import { useContext, ChangeEvent, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import MovieContext, { IMovieContext } from "../../provider/MoviesProvaider";
 import { MovieRequest } from "../../domain/butacaRequest";
@@ -54,41 +54,44 @@ const generos = [
   },
 ];
 
-const MovieForm = () => {
-  function randomNumberBetween(min: number, max: number): number {
-    return Math.random() * (max - min) + min;
-  }
-
-  const { setMovieParam, runSaveMovie } = useContext(
+const EditMovieForm = () => {
+  const { setMovieParam, runEditMovie, setIsEditModal, setGeneroParam, generoParam } = useContext(
     MovieContext
   ) as IMovieContext;
-  const { register, setValue, getValues, reset } = useFormContext<MovieRequest>();
+  const { register, setValue, getValues, reset } =
+    useFormContext<MovieRequest>();
 
-  const [selectParam, setSelecParam] = useState<string>("");
-
-  setValue("id", randomNumberBetween(0, 10000000).toString());
+  const valueParams = { ...getValues() };
 
   const handle_SelectChangeEvent = (event: ChangeEvent<HTMLSelectElement>) => {
     setValue("genero", event.target.value);
-    setSelecParam(event.target.value);
+    setGeneroParam(event.target.value);
   };
 
-  const handle_save = (event: MouseEvent<HTMLButtonElement>) => {
+  const handle_edit = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const valueParams = { ...getValues() };
-    if (!valueParams) return null;
+    if (
+      !valueParams.name ||
+      !valueParams.duracion ||
+      !valueParams.edadPermitida ||
+      !valueParams.genero
+    )
+      return alert(
+        "Asegurese de no dejar ningun campo vacio, esto puede generar errores en la base de datos, gracias!"
+      );
     setMovieParam(valueParams);
-    runSaveMovie();
-    reset()
+    runEditMovie();
+    setIsEditModal(false);
+    reset();
   };
 
   return (
-    <div className="flex flex-col">
+    <form className="flex flex-col gap-2">
       <input
         type="text"
         placeholder="Nombre Pelicula"
         {...register("name", { required: "Asegurate de ingresar un nombre" })}
-        className="p-1 bg-slate-300 rounded-md text-black"
+        className="p-1 bg-slate-300 rounded-md text-black text-center"
       />
       <input
         type="text"
@@ -96,7 +99,7 @@ const MovieForm = () => {
         {...register("edadPermitida", {
           required: "Asegurate de ingresar un nombre",
         })}
-        className="p-1 bg-slate-300 rounded-md text-black"
+        className="p-1 bg-slate-300 rounded-md text-black text-center"
       />
       <input
         type="text"
@@ -104,11 +107,15 @@ const MovieForm = () => {
         {...register("duracion", {
           required: "Asegurate de ingresar una duracion",
         })}
-        className="p-1 bg-slate-300 rounded-md text-black"
+        className="p-1 bg-slate-300 rounded-md text-black text-center"
       />
       <label className="flex flex-row gap-2 items-center">
         <p>Genero:</p>
-        <select value={selectParam} onChange={handle_SelectChangeEvent}>
+        <select
+          className="rounded-lg text-center text-black p-1"
+          value={generoParam}
+          onChange={handle_SelectChangeEvent}
+        >
           {generos.map((data) => (
             <option key={data.name} value={data.value}>
               {data.name}
@@ -116,9 +123,14 @@ const MovieForm = () => {
           ))}
         </select>
       </label>
-      <button onClick={handle_save}>Guardar Pelicula</button>
-    </div>
+      <button
+        className="p-1 bg-slate-100 rounded-lg text-black"
+        onClick={handle_edit}
+      >
+        Editar Pelicula
+      </button>
+    </form>
   );
 };
 
-export default MovieForm;
+export default EditMovieForm;
