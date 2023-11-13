@@ -19,7 +19,7 @@ const DialogComponent = ({
         leaveTo="opacity-0"
       >
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <Dialog.Panel>
+          <Dialog.Panel className="w-full max-w-sm rounded bg-white">
             <Dialog.Title>{title}</Dialog.Title>
             <div>{children}</div>
           </Dialog.Panel>
