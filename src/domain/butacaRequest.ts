@@ -22,7 +22,7 @@ export interface BookingRequest {
 //Interfaces secundarias////
 ///////////////////////////
 
-//50%
+//90%
 export interface RoomRequest {
     id: string;
     name: string;

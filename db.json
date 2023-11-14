@@ -1,7 +1,13 @@
 {
   "billboard": [],
   "booking": [],
-  "room": [],
+  "room": [
+    {
+      "id": "1714852.621171925",
+      "name": "star trek",
+      "number": "2"
+    }
+  ],
   "seat": [],
   "movie": [
     {

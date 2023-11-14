@@ -2,8 +2,10 @@ import { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RoomRequest } from "../../domain/butacaRequest";
 import { RoomProvaider } from "../../provider/RoomProvaider";
+import FormRoom from "../../components/Forms/formRoom";
+import RoomsList from "../../components/ListComtainers/roomsList";
 
-const MovieContainer: FC = () => {
+const RoomContainer: FC = () => {
   const movieStateform: RoomRequest = {
     id: "",
     name: "",
@@ -16,12 +18,12 @@ const MovieContainer: FC = () => {
     <RoomProvaider>
       <FormProvider {...movieMethods}>
         <div className="flex flex-col items-center m-1 gap-2">
-          {/* <FormMovie />
-          <MoviesList /> */}
+          <FormRoom />
+          <RoomsList />
         </div>
       </FormProvider>
     </RoomProvaider>
   );
 };
 
-export default MovieContainer;
+export default RoomContainer;

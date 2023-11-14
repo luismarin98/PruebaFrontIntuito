@@ -11,9 +11,9 @@ const useRoom = () => {
 
   const runEditRoom = async () => {
     await axios
-      .put(`${query}${number}`, { ...room })
+      .put(`${query}${room?.id}`, { ...room })
       .then((res) => {
-        if (res.status === 201) return alert("Pelicula editada con exito");
+        if (res.status === 201) return alert("Sala editada con exito");
       })
       .catch(() => {
         alert("Algo paso, intenta nuevamente");
@@ -24,7 +24,7 @@ const useRoom = () => {
     await axios
       .post(query, { ...room })
       .then((res) => {
-        if (res.status === 201) return alert("Pelicula guardado con exito");
+        if (res.status === 201) return alert("Sala guardado con exito");
       })
       .catch(() => {
         alert("Algo paso, intenta nuevamente");
@@ -39,6 +39,7 @@ const useRoom = () => {
         if (res.status === 304)
           return alert("Puede que no hayan datos en la base de datos!");
         setRoomList(res.data);
+        number ? setNumber("") : null;
       })
       .catch(() => {
         alert("Algo paso, intenta nuevamente");
@@ -47,9 +48,9 @@ const useRoom = () => {
 
   const runDeleteRoom = async () => {
     await axios
-      .delete(query)
+      .delete(`${query}${room?.id}`)
       .then((res) => {
-        if (res.status === 200) return alert("Pelicula eliminada con exito");
+        if (res.status === 200) return alert("Sala eliminada con exito");
       })
       .catch(() => {
         alert("Algo paso, intente nuevamente");

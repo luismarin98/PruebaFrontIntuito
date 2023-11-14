@@ -16,6 +16,7 @@ const EditCustomerForm = () => {
   const { register, getValues, reset } = useFormContext<CustomerRequest>();
 
   const handle_edit = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     const valueParams = { ...getValues() };
     event.preventDefault();
     if (
