@@ -65,7 +65,7 @@ const SaveCustomerform = () => {
         className="p-1 bg-slate-300 rounded-md text-black text-center"
       />
       <input
-        type="text"
+        type="tel"
         placeholder="Telefono"
         {...register("phone", {
           required: "Asegurate de ingresar el telefono",
@@ -73,7 +73,7 @@ const SaveCustomerform = () => {
         className="p-1 bg-slate-300 rounded-md text-black text-center"
       />
       <input
-        type="text"
+        type="email"
         placeholder="Email"
         {...register("email", {
           required: "Asegurate de ingresar el Email del cliente",

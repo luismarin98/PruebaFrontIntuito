@@ -6,14 +6,17 @@ import CustomerContext, {
 import { CustomerRequest } from "../../domain/butacaRequest";
 
 const EditCustomerForm = () => {
-  const { setCustomer, runEditCustomer, setIsEditModal } = useContext(
-    CustomerContext
-  ) as ICustomerContext;
+  const {
+    setCustomer,
+    runEditCustomer,
+    setIsEditModal,
+    setDocumento,
+    setIsCloseModal,
+  } = useContext(CustomerContext) as ICustomerContext;
   const { register, getValues, reset } = useFormContext<CustomerRequest>();
 
-  const valueParams = { ...getValues() };
-
   const handle_edit = (event: MouseEvent<HTMLButtonElement>) => {
+    const valueParams = { ...getValues() };
     event.preventDefault();
     if (
       !valueParams.document ||
@@ -27,8 +30,10 @@ const EditCustomerForm = () => {
         "Asegurese de no dejar ningun campo vacio, esto puede generar errores en la base de datos, gracias!"
       );
     setCustomer(valueParams);
+    setDocumento(valueParams?.id);
     runEditCustomer();
     setIsEditModal(false);
+    setIsCloseModal(false);
     reset();
   };
 
@@ -82,7 +87,12 @@ const EditCustomerForm = () => {
         })}
         className="p-1 bg-slate-300 rounded-md text-black text-center"
       />
-      <button onClick={handle_edit}>Guardar Pelicula</button>
+      <button
+        className="p-1 bg-slate-100 rounded-lg text-black"
+        onClick={handle_edit}
+      >
+        Editar cliente
+      </button>
     </form>
   );
 };

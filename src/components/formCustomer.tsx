@@ -15,7 +15,7 @@ const FormCustomer = () => {
     runFilterCustomers,
     setIsEditModal,
     isEditModal,
-    setCustomer,
+    setDocumento,
   } = useContext(CustomerContext) as ICustomerContext;
 
   const { reset, register, getValues } = useFormContext<CustomerRequest>();
@@ -30,8 +30,9 @@ const FormCustomer = () => {
   const handle_ShowCustomers = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const valueParam = { ...getValues() };
-    setCustomer(valueParam);
+    if (valueParam?.document !== "") setDocumento(valueParam?.document);
     runFilterCustomers();
+    reset();
   };
 
   return (

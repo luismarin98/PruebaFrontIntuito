@@ -19,5 +19,24 @@
       "edadPermitida": "18"
     }
   ],
-  "customer": []
+  "customer": [
+    {
+      "age": "15",
+      "document": "123",
+      "email": "ss",
+      "id": "2650942.3317445526",
+      "lastName": "ss",
+      "name": "s",
+      "phone": "123"
+    },
+    {
+      "age": "18",
+      "document": "1234",
+      "email": "aaaaaa",
+      "id": "1487653.0590823367",
+      "lastName": "aa",
+      "name": "a",
+      "phone": "1234"
+    }
+  ]
 }

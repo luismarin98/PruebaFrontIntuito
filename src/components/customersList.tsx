@@ -11,7 +11,9 @@ const CustomersList: FC = () => {
     setIsCloseModal,
     setIsEditModal,
     runDeleteCustomer,
+    setDocumento,
     setCustomer,
+    runFilterCustomers
   } = useContext(CustomerContext) as ICustomerContext;
 
   const { setValue } = useFormContext<CustomerRequest>();
@@ -39,8 +41,10 @@ const CustomersList: FC = () => {
     data: CustomerRequest
   ) => {
     event.preventDefault();
+    setDocumento(data.id);
     setCustomer(data);
     runDeleteCustomer();
+    runFilterCustomers();
   };
 
   return customerList!.length > 0 ? (

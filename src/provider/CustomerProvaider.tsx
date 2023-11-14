@@ -12,6 +12,7 @@ export interface ICustomerContext {
   //Parametros de la pelicula
   customerList: CustomerRequest[] | undefined;
   setCustomer: Dispatch<SetStateAction<CustomerRequest | undefined>>;
+  setDocumento: Dispatch<SetStateAction<string>>;
 
   //Parametros de acciones
   runFilterCustomers: () => void;
@@ -37,6 +38,7 @@ export const CustomerProvaider = ({ children }: { children: ReactNode }) => {
     runFilterCustomers,
     runSaveCustomer,
     setCustomer,
+    setDocumento,
   } = useCustomer();
 
   const [isOpenModal, setIsCloseModal] = useState<boolean>(false);
@@ -53,10 +55,13 @@ export const CustomerProvaider = ({ children }: { children: ReactNode }) => {
     setCustomer,
     setIsCloseModal,
     setIsEditModal,
+    setDocumento,
   };
 
   return (
-    <CustomerContext.Provider value={storage}>{children}</CustomerContext.Provider>
+    <CustomerContext.Provider value={storage}>
+      {children}
+    </CustomerContext.Provider>
   );
 };
 
