@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { MovieRequest } from "../../domain/butacaRequest";
 import { MovieProvaider } from "../../provider/MoviesProvaider";
@@ -15,6 +15,10 @@ const MovieContainer: FC = () => {
   };
 
   const movieMethods = useForm({ defaultValues: movieStateform });
+
+  useEffect(() => {
+    document.title = 'Prueba Intuito | Peliculas'
+  }, [])
 
   return (
     <MovieProvaider>

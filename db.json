@@ -15,7 +15,14 @@
       "name": "star trek",
       "genero": "ciencia_ficcion",
       "duracion": "234",
-      "edadPermitida": "16"
+      "edadPermitida": "16",
+      "room": [
+        {
+          "id": "1714852.621171925",
+          "name": "star trek",
+          "number": "2"
+        }
+      ]
     },
     {
       "id": "7931477.568437282",

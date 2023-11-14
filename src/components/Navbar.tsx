@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.f683b60d.png";
 
 const routes = [
   {
@@ -14,18 +15,23 @@ const routes = [
     name: "Salas",
   },
   {
-    path: '/seats',
-    name: 'Sillas'
-  }
+    path: "/seats",
+    name: "Sillas",
+  },
 ];
 
 const Navbar = () => {
   return (
     <nav className="flex flex-row flex-wrap justify-around bg-white dark:bg-slate-800 rounded-lg px-6 py-2 ring-1 ring-slate-900/5 shadow-xl">
       <Link
-        className="text-slate-900 dark:text-white text-base font-medium tracking-tight"
+        className="text-slate-900 dark:text-white text-base font-medium tracking-tight flex flex-row items-center gap-2"
         to="/"
       >
+        <img
+          className="inline-block h-6 w-6 rounded-full ring-1 ring-white"
+          src={logo}
+          alt="logoIntuito"
+        />
         Prueba Intuito
       </Link>
       <ul className="flex flex-row gap-2">

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RoomRequest } from "../../domain/butacaRequest";
 import { RoomProvaider } from "../../provider/RoomProvaider";
@@ -13,6 +13,10 @@ const RoomContainer: FC = () => {
   };
 
   const movieMethods = useForm({ defaultValues: movieStateform });
+
+  useEffect(() => {
+    document.title = 'Prueba Intuito | Salas'
+  }, [])
 
   return (
     <RoomProvaider>

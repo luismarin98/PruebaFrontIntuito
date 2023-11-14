@@ -5,22 +5,20 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import { RoomRequest, SeatRequest } from "../domain/butacaRequest";
+import { SeatRequest } from "../domain/butacaRequest";
 import useSeat from "../hooks/useSeat";
 
 export interface ISeatContext {
   //Parametros de la pelicula
   seatsList: SeatRequest[] | undefined;
   setNumber: Dispatch<SetStateAction<string>>;
-  setNumberRoom: Dispatch<SetStateAction<string | undefined>>;
   setSeat: Dispatch<SetStateAction<SeatRequest | undefined>>;
 
   //Parametros de acciones
   runFilterSeats: () => void;
-  runSaveSeat: () => void;
+  runSaveSeat: (param: string) => Promise<void>;
   runEditSeat: () => void;
   runDeleteSeat: () => Promise<void>;
-  getRoom: (param: string) => Promise<RoomRequest>;
 
   //Parametros de accion del modal
   isOpenModal: boolean;
@@ -37,14 +35,12 @@ export const SeatProvaider = ({ children }: { children: ReactNode }) => {
   const [isEditModal, setIsEditModal] = useState<boolean>(false);
 
   const {
-    getRoom,
     runDeleteSeat,
     runEditSeat,
     runFilterSeats,
     runSaveSeat,
     seatsList,
     setNumber,
-    setNumberRoom,
     setSeat,
   } = useSeat();
 
@@ -53,14 +49,12 @@ export const SeatProvaider = ({ children }: { children: ReactNode }) => {
     setIsCloseModal,
     isEditModal,
     setIsEditModal,
-    getRoom,
     runDeleteSeat,
     runEditSeat,
     runFilterSeats,
     runSaveSeat,
     seatsList,
     setNumber,
-    setNumberRoom,
     setSeat,
   };
 

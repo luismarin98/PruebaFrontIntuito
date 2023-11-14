@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { CustomerRequest } from "../../domain/butacaRequest";
 import { CustomerProvaider } from "../../provider/CustomerProvaider";
@@ -17,6 +17,10 @@ const CustomerContainer: FC = () => {
   };
 
   const customerMethods = useForm({ defaultValues: customerStateForm });
+
+  useEffect(() => {
+    document.title = "Prueba Intuito | Clientes";
+  }, []);
 
   return (
     <CustomerProvaider>
