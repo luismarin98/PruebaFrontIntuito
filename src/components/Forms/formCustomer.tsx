@@ -1,12 +1,12 @@
 import { useContext, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
-import { CustomerRequest } from "../domain/butacaRequest";
-import DialogComponent from "./modalComponent";
+import { CustomerRequest } from "../../domain/butacaRequest";
+import DialogComponent from "../ModalComponent/modalComponent";
 import CustomerContext, {
   ICustomerContext,
-} from "../provider/CustomerProvaider";
-import EditCustomerForm from "./forms/editCustomer";
-import SaveCustomerform from "./forms/saveCustomer";
+} from "../../provider/CustomerProvaider";
+import EditCustomerForm from "../FormsActions/editCustomer";
+import SaveCustomerform from "../FormsActions/saveCustomer";
 
 const FormCustomer = () => {
   const {

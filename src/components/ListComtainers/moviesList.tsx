@@ -1,6 +1,6 @@
 import { FC, useContext, MouseEvent } from "react";
-import MovieContext, { IMovieContext } from "../provider/MoviesProvaider";
-import { MovieRequest } from "../domain/butacaRequest";
+import MovieContext, { IMovieContext } from "../../provider/MoviesProvaider";
+import { MovieRequest } from "../../domain/butacaRequest";
 import { useFormContext } from "react-hook-form";
 
 const MoviesList: FC = () => {

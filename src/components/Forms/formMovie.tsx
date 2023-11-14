@@ -1,10 +1,10 @@
 import { useContext, MouseEvent, ChangeEvent } from "react";
-import MovieContext, { IMovieContext } from "../provider/MoviesProvaider";
-import SaveMovieForm from "./forms/saveMovieForm";
-import DialogComponent from "./modalComponent";
-import EditMovieForm from "./forms/editMovieForm";
+import MovieContext, { IMovieContext } from "../../provider/MoviesProvaider";
+import SaveMovieForm from "../FormsActions/saveMovieForm";
+import DialogComponent from "../ModalComponent/modalComponent";
+import EditMovieForm from "../FormsActions/editMovieForm";
 import { useFormContext } from "react-hook-form";
-import { MovieRequest } from "../domain/butacaRequest";
+import { MovieRequest } from "../../domain/butacaRequest";
 
 const generos = [
   {

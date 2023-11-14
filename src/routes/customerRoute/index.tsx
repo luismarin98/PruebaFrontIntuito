@@ -2,8 +2,8 @@ import { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { CustomerRequest } from "../../domain/butacaRequest";
 import { CustomerProvaider } from "../../provider/CustomerProvaider";
-import CustomersList from "../../components/customersList";
-import FormCustomer from "../../components/formCustomer";
+import CustomersList from "../../components/ListComtainers/customersList";
+import FormCustomer from "../../components/Forms/formCustomer";
 
 const CustomerContainer: FC = () => {
   const customerStateForm: CustomerRequest = {

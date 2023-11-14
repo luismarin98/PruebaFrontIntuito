@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { ModalRequest } from "../domain/ModalRequest";
+import { ModalRequest } from "../../domain/ModalRequest";
 import { Fragment } from "react";
 
 const DialogComponent = ({

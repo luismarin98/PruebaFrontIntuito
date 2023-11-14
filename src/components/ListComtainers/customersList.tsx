@@ -1,9 +1,9 @@
 import { FC, useContext, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
-import { CustomerRequest } from "../domain/butacaRequest";
+import { CustomerRequest } from "../../domain/butacaRequest";
 import CustomerContext, {
   ICustomerContext,
-} from "../provider/CustomerProvaider";
+} from "../../provider/CustomerProvaider";
 
 const CustomersList: FC = () => {
   const {

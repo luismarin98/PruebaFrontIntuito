@@ -22,6 +22,7 @@ export interface BookingRequest {
 //Interfaces secundarias////
 ///////////////////////////
 
+//50%
 export interface RoomRequest {
     id: string;
     name: string;
@@ -35,6 +36,7 @@ export interface SeatRequest {
     room: RoomRequest
 }
 
+//ya esta
 export interface MovieRequest {
     id: string;
     name: string;
@@ -43,6 +45,7 @@ export interface MovieRequest {
     duracion: string;
 }
 
+//ya esta
 export interface CustomerRequest {
     id: string;
     document: string;
