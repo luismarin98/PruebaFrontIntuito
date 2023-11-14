@@ -13,6 +13,10 @@ const routes = [
     path: "/rooms",
     name: "Salas",
   },
+  {
+    path: '/seats',
+    name: 'Sillas'
+  }
 ];
 
 const Navbar = () => {

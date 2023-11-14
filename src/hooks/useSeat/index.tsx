@@ -2,7 +2,7 @@ import { useState } from "react";
 import { RoomRequest, SeatRequest } from "../../domain/butacaRequest";
 import axios from "axios";
 
-const useCustomer = () => {
+const useSeat = () => {
   const [seatsList, setSeatsList] = useState<SeatRequest[] | undefined>([]);
   const [seat, setSeat] = useState<SeatRequest | undefined>();
   const [number, setNumber] = useState<string>("");
@@ -18,6 +18,7 @@ const useCustomer = () => {
   };
 
   const runEditSeat = async () => {
+    //Se busca la sala y se la agrega al parametro seat
     const fetchRoom = async () => {
       const roomData = await getRoom(numberRoom!);
 
@@ -87,8 +88,8 @@ const useCustomer = () => {
     runDeleteSeat,
     setNumber,
     getRoom,
-    setNumberRoom
+    setNumberRoom,
   };
 };
 
-export default useCustomer;
+export default useSeat;
