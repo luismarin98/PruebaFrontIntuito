@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { CustomerRequest } from "../../domain/butacaRequest";
+import { RoomRequest } from "../../domain/butacaRequest";
 import axios from "axios";
 
 const useRoom = () => {
-  const [roomList, setRoomList] = useState<CustomerRequest[] | undefined>([]);
-  const [room, setRoom] = useState<CustomerRequest | undefined>();
+  const [roomList, setRoomList] = useState<RoomRequest[] | undefined>([]);
+  const [room, setRoom] = useState<RoomRequest | undefined>();
+  const [number, setNumber] = useState<string>("");
 
-  const query = `http://localhost:3000/room/${
-    room !== undefined ? room?.id : ""
-  }`;
+  const query = `http://localhost:3000/room/`;
 
   const runEditRoom = async () => {
     await axios
-      .put(query + `/${room?.id}`, { ...room })
+      .put(`${query}${number}`, { ...room })
       .then((res) => {
         if (res.status === 201) return alert("Pelicula editada con exito");
       })
@@ -34,7 +33,7 @@ const useRoom = () => {
 
   const runFilterRooms = async () => {
     await axios
-      .get(query)
+      .get(`${query}${number ? `?number=${number}` : ""}`)
       .then((res) => {
         if (!res.data) return null;
         if (res.status === 304)
@@ -60,6 +59,7 @@ const useRoom = () => {
   return {
     roomList,
     setRoom,
+    setNumber,
     runEditRoom,
     runSaveRoom,
     runFilterRooms,

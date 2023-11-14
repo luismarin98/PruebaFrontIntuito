@@ -6,12 +6,13 @@ import {
   useState,
 } from "react";
 import { RoomRequest } from "../domain/butacaRequest";
+import useRoom from "../hooks/useRoom";
 
 export interface IRoomContext {
   //Parametros de la pelicula
-  roomsList: RoomRequest[] | undefined;
-  setRoomParam: Dispatch<SetStateAction<RoomRequest | undefined>>;
-  setIdRoom: Dispatch<SetStateAction<string>>;
+  roomList: RoomRequest[] | undefined;
+  setRoom: Dispatch<SetStateAction<RoomRequest | undefined>>;
+  setNumber: Dispatch<SetStateAction<string>>;
 
   //Parametros de acciones
   runFilterRooms: () => void;
@@ -33,11 +34,28 @@ export const RoomProvaider = ({ children }: { children: ReactNode }) => {
   const [isOpenModal, setIsCloseModal] = useState<boolean>(false);
   const [isEditModal, setIsEditModal] = useState<boolean>(false);
 
+  const {
+    roomList,
+    runDeleteRoom,
+    runEditRoom,
+    runFilterRooms,
+    runSaveRoom,
+    setNumber,
+    setRoom,
+  } = useRoom();
+
   const storage: IRoomContext = {
     isOpenModal,
     setIsCloseModal,
     isEditModal,
     setIsEditModal,
+    roomList,
+    runDeleteRoom,
+    runEditRoom,
+    runFilterRooms,
+    runSaveRoom,
+    setNumber,
+    setRoom,
   };
 
   return (
