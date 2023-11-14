@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { MovieRequest } from "../../domain/butacaRequest";
-import { BillboardProvaider } from "../../provider/MoviesProvaider";
+import { MovieProvaider } from "../../provider/MoviesProvaider";
 import FormMovie from "../../components/formMovie";
 import MoviesList from "../../components/moviesList";
 
@@ -17,14 +17,14 @@ const MovieContainer: FC = () => {
   const movieMethods = useForm({ defaultValues: movieStateform });
 
   return (
-    <BillboardProvaider>
+    <MovieProvaider>
       <FormProvider {...movieMethods}>
         <div className="flex flex-col items-center m-1 gap-2">
           <FormMovie />
           <MoviesList />
         </div>
       </FormProvider>
-    </BillboardProvaider>
+    </MovieProvaider>
   );
 };
 

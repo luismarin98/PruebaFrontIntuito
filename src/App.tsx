@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { MovieContainer } from "./routes";
+import { CustomerContainer, MovieContainer } from "./routes";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/movies" element={<MovieContainer />} />
+        <Route path="/customer" element={<CustomerContainer />} />
       </Routes>
     </div>
   );

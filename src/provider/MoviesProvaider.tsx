@@ -31,7 +31,7 @@ export interface IMovieContext {
 
 const MovieContext = createContext({});
 
-export const BillboardProvaider = ({ children }: { children: ReactNode }) => {
+export const MovieProvaider = ({ children }: { children: ReactNode }) => {
   const {
     moviesList,
     setMovieParam,

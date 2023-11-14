@@ -128,7 +128,7 @@ const SaveMovieForm = () => {
           ))}
         </select>
       </label>
-      <button onClick={handle_save}>Guardar Pelicula</button>
+      <button className="p-1 bg-slate-100 rounded-lg text-black" onClick={handle_save}>Guardar Pelicula</button>
     </form>
   );
 };
