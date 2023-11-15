@@ -62,7 +62,7 @@ const BookingList: FC = () => {
             className="text-slate-500 dark:text-slate-400 mt-2 text-sm"
           >
             <th>
-              {data.billboard!.map((bill) => (
+              {/* {data.billboard!.map((bill) => (
                 <div key={bill.id}>
                   <p>Fecha: {bill.date}</p>
                   <p>Inicia: {bill.endTime}</p>
@@ -86,10 +86,10 @@ const BookingList: FC = () => {
                     ))}
                   </p>
                 </div>
-              ))}
+              ))} */}
             </th>
             <th>
-              {data.customer!.map((customer) => (
+              {/* {data.customer!.map((customer) => (
                 <div key={customer.id}>
                   <p>Nombre: {customer.name}</p>
                   <p>Documento: {customer.document}</p>
@@ -97,10 +97,10 @@ const BookingList: FC = () => {
                   <p>Telefono: {customer.phone}</p>
                   <p>Edad: {customer.age}</p>
                 </div>
-              ))}
+              ))} */}
             </th>
             <th>
-              {data.seat!.map((seat) => (
+              {/* {data.seat!.map((seat) => (
                 <div key={seat.id}>
                   <p>{seat.number}</p>
                   <p>{seat.row}</p>
@@ -112,7 +112,7 @@ const BookingList: FC = () => {
                     ))}
                   </p>
                 </div>
-              ))}
+              ))} */}
             </th>
             <th>{data.date}</th>
             <th className="flex flex-row gap-2 p-1">

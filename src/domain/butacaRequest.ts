@@ -14,9 +14,9 @@ export interface BillboardRequest {
 export interface BookingRequest {
     id: string;
     date: string;
-    customer: CustomerRequest[];
-    seat: SeatRequest[];
-    billboard: BillboardRequest[];
+    customer: CustomerRequest;
+    seat: SeatRequest;
+    billboard: BillboardRequest;
 }
 
 ////////////////////////////
