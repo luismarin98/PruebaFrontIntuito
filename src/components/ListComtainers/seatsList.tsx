@@ -58,13 +58,11 @@ const SeatsList: FC = () => {
             <th>{data.number}</th>
             <th>{data.row}</th>
             <th>
-              {
-                data.room?.map((room) => (
-                  <div key={room.id} className="flex flex-row gap-2 items-center justify-center">
-                    <p>{room.name} | Sala: {room.number}</p>
-                  </div>
-                ))
-              }
+              <div className="flex flex-row gap-2 items-center justify-center">
+                <p>
+                  {data.room.name} | Sala: {data.room.number}
+                </p>
+              </div>
             </th>
             <th className="flex flex-row gap-2 p-1 items-center justify-center">
               <button

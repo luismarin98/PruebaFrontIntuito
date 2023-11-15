@@ -35,7 +35,7 @@ export interface SeatRequest {
     id: string;
     number: string;
     row: string;
-    room: RoomRequest[]
+    room: RoomRequest
 }
 
 //ya esta

@@ -3,7 +3,8 @@ import { useFormContext } from "react-hook-form";
 import { SeatRequest } from "../../domain/butacaRequest";
 import DialogComponent from "../ModalComponent/modalComponent";
 import SeatContext, { ISeatContext } from "../../provider/SeatProvaider";
-import SaveSeat from "../FormsActions/saveSeat";
+import EditSeatForm from "../FormsActions/editSeat";
+import SaveSeatForm from "../FormsActions/saveSeat";
 
 const FormSeat = () => {
   const {
@@ -59,7 +60,7 @@ const FormSeat = () => {
         onClose={setIsCloseModal}
         title={isEditModal ? "Editar silla" : "Guardar silla"}
       >
-        <SaveSeat />
+        {isEditModal ? <EditSeatForm /> : <SaveSeatForm />}
       </DialogComponent>
     </>
   );

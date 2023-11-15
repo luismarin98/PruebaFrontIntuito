@@ -17,8 +17,8 @@ const useSeat = () => {
   };
 
   const runSaveSeat = async (numberRoom: string) => {
-    const getRoom = await axios.get<RoomRequest[]>(`${queryRoom}?number${numberRoom}`)
-    setSeat((prev) => ({ ...prev!, room: getRoom.data }));
+    const getRoom = await axios.get<RoomRequest[]>(`${queryRoom}?number=${numberRoom}`);
+    setSeat((prev) => ({ ...prev!, room: getRoom.data[0] }));
     return await axios.post(query, { ...seat }).then((res) => {
       if (res.statusText === 'OK') return alert('Los datos del asiento se guardaron correctamente');
     })

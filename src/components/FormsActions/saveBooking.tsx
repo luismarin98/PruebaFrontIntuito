@@ -47,9 +47,7 @@ const SaveBookingForm = () => {
     reset();
   };
 
-  (async () => {
-    runGetBillboard();
-  })();
+  useEffect(() => {}, []);
 
   return (
     <form className="flex flex-col p-5 gap-2 items-center">
