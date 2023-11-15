@@ -2,20 +2,21 @@
 //Interfaces principales////
 ////////////////////////////
 
-export interface BilboardRequest {
+export interface BillboardRequest {
     id: string;
     date: string;
     starttime: string;
     endTime: string;
-    movie: MovieRequest;
-    room: RoomRequest;
+    movie: MovieRequest[];
+    room: RoomRequest[];
 }
 
 export interface BookingRequest {
+    id: string;
     date: string;
-    customer: CustomerRequest
-    seat: SeatRequest;
-    billboard: BilboardRequest;
+    customer: CustomerRequest[];
+    seat: SeatRequest[];
+    billboard: BillboardRequest[];
 }
 
 ////////////////////////////

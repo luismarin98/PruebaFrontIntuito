@@ -28,14 +28,14 @@ const useSeat = () => {
     const response = await axios.get<SeatRequest[]>(`${query}${number !== "" ? `?number=${number}` : ""}`);
     const datoAjustado = response.data.map((prev) => ({ ...prev!, room: prev.room }));
     if (response.statusText === 'OK') { setSeatsList(datoAjustado) }
-    else { alert('Algo paso intente nuevamente') }
+    else { alert('Algo paso, intente nuevamente') }
     number ? setNumber('') : null
   };
 
   const runDeleteSeat = async () => {
     const response = await axios.delete(`${query}${seat?.id}`);
     if (response.statusText === 'OK') { alert('Silla eliminada del registro') }
-    else { alert('Algo paso intente nuevament') }
+    else { alert('Algo paso, intente nuevament') }
   };
 
   return {
