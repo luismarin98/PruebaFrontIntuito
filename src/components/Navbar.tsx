@@ -18,6 +18,14 @@ const routes = [
     path: "/seats",
     name: "Sillas",
   },
+  {
+    path: '/billboards',
+    name: 'Carteleras',
+  },
+  {
+    path: '/bookings',
+    name: 'Reservas',
+  }
 ];
 
 const Navbar = () => {
@@ -34,7 +42,7 @@ const Navbar = () => {
         />
         Prueba Intuito
       </Link>
-      <ul className="flex flex-row gap-2">
+      <ul className="flex flex-row gap-4">
         {routes.map((data) => (
           <li key={data.name} className="text-slate-500 dark:text-slate-400">
             <Link className="hover:text-slate-600" to={data.path}>
