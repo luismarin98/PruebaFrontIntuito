@@ -13,11 +13,12 @@ export interface ISeatContext {
   seatsList: SeatRequest[] | undefined;
   setNumber: Dispatch<SetStateAction<string>>;
   setSeat: Dispatch<SetStateAction<SeatRequest | undefined>>;
+  //setRoomNumber: (param: string) => Promise<void>;
 
   //Parametros de acciones
-  runFilterSeats: () => void;
+  runFilterSeats: () => Promise<void>;
   runSaveSeat: (param: string) => Promise<void>;
-  runEditSeat: () => void;
+  runEditSeat: () => Promise<void>;
   runDeleteSeat: () => Promise<void>;
 
   //Parametros de accion del modal

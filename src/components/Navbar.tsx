@@ -28,7 +28,7 @@ const Navbar = () => {
         to="/"
       >
         <img
-          className="inline-block h-6 w-6 rounded-full ring-1 ring-white"
+          className="inline-block h-6 w-6 "
           src={logo}
           alt="logoIntuito"
         />

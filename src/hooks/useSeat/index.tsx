@@ -10,27 +10,6 @@ const useSeat = () => {
   const query = `http://localhost:3000/seat/`;
   const queryRoom = `http://localhost:3000/room/`;
 
-  /*   //Obtengo los datos de la sala
-  const getRoom = async (numberR: string): Promise<RoomRequest> => {
-    const response = await axios.get<RoomRequest>(
-      `${queryRoom}?number=${numberR}`
-    );
-    return response.data;
-  };
-
-
-  //Se busca la sala y se la agregan los datos al parametro seat
-  const fetchRoom = async () => {
-    const roomData = await getRoom(numberRoom!);
-    setSeat({ ...seat, room: roomData });
-    /* setSeat({
-      room: roomData,
-      id: seat!.id,
-      number: seat!.number,
-      row: seat!.row,
-    });
-  }; */
-
   const runEditSeat = async () => {
     await axios
       .put(`${query}?number=${number}`, { ...seat })
@@ -43,32 +22,29 @@ const useSeat = () => {
   };
 
   const runSaveSeat = async (numberRoom: string) => {
-    
-    const response = await axios.get<RoomRequest>(
-      `${queryRoom}?number${numberRoom}`
-    )
-    const data = response.data;
-    if (!data)
-      return alert(
-        "No se encontro la sala en cuestion, ingrese correctamente el numero de la sala"
-      );
-    setSeat({ ...seat!, room: data });
-    console.log(seat);
+    const getRoom = await axios.get<RoomRequest[]>(`${queryRoom}?number${numberRoom}`)
+    setSeat((prev) => ({ ...prev!, room: getRoom.data }));
+    await axios.post(query, { ...seat }).then((res) => {
+      if (res.statusText === 'OK') return alert('Los datos del asiento se guardaron correctamente');
+    })
   };
 
   const runFilterSeats = async () => {
-    await axios
-      .get(`${query}${number !== "" ? `?number=${number}` : ""}`)
-      .then((res) => {
-        if (!res.data) return null;
-        if (res.status === 304)
-          return alert("Puede que no hayan datos en la base de datos!");
-        setSeatsList(res.data);
-        number ? setNumber("") : null;
-      })
-      .catch(() => {
-        alert("Algo paso, intenta nuevamente");
-      });
+    const response = await axios.get<SeatRequest[]>(`${query}${number !== "" ? `?number=${number}` : ""}`);
+    const datoAjustado = response.data.map((prev) => ({ ...prev!, room: prev.room }));
+    if (response.statusText === 'OK') setSeatsList(datoAjustado);
+    /*     await axios
+          .get<SeatRequest[]>(`${query}${number !== "" ? `?number=${number}` : ""}`)
+          .then((res) => {
+            const response = res.data.map((seat) => ({ ...seat!, room: seat.room[0] }));
+            if (res.statusText === 'OK') { setSeatsList(response); }
+            else { alert('Algo paso en la obtencion de los datos') }
+            console.log(response)
+            number ? setNumber("") : null;
+          })
+          .catch(() => {
+            alert("Algo paso, intenta nuevamente");
+          }); */
   };
 
   const runDeleteSeat = async () => {

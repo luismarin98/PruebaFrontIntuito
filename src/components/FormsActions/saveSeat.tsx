@@ -1,4 +1,4 @@
-import { useContext, MouseEvent } from "react";
+import { useContext, MouseEvent, useState, ChangeEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import { SeatRequest } from "../../domain/butacaRequest";
 import SeatContext, { ISeatContext } from "../../provider/SeatProvaider";
@@ -8,19 +8,26 @@ const SaveSeat = () => {
     return Math.random() * (max - min) + min;
   }
 
-  const { runSaveSeat, setSeat } = useContext(SeatContext) as ISeatContext;
+  const { runSaveSeat, setSeat, setIsCloseModal } = useContext(SeatContext) as ISeatContext;
 
   const { register, setValue, getValues, reset } =
     useFormContext<SeatRequest>();
 
+  const [roomNumber, setRoomNumber] = useState<string>('');
+
   setValue("id", randomNumberBetween(0, 10000000).toString());
+
+  const handle_change = (event: ChangeEvent<HTMLInputElement>) => {
+    setRoomNumber(event.target.value);
+  }
 
   const handle_save = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const valueParams = { ...getValues() };
     if (!valueParams) return alert("Asegurate de rellenar todos los campos correspondientes");
     setSeat(valueParams);
-    runSaveSeat(valueParams.room.number);
+    runSaveSeat(roomNumber);
+    setIsCloseModal(false);
     reset();
   };
 
@@ -46,9 +53,7 @@ const SaveSeat = () => {
         type="text"
         placeholder="Buscar numero de sala"
         className="p-1 bg-slate-200 rounded-md text-black text-center"
-        {...register("room.number", {
-          required: "Asegurate de ingresar el numero de la sala",
-        })}
+        onChange={handle_change}
       />
       <button
         className="p-1 bg-slate-100 rounded-lg text-black"

@@ -8,14 +8,11 @@
       "number": "2"
     }
   ],
-  "seat": [],
-  "movie": [
+  "seat": [
     {
-      "id": "3986750.618619439",
-      "name": "star trek",
-      "genero": "ciencia_ficcion",
-      "duracion": "234",
-      "edadPermitida": "16",
+      "id": "3799401.3846238484",
+      "number": "25",
+      "row": "7",
       "room": [
         {
           "id": "1714852.621171925",
@@ -23,6 +20,15 @@
           "number": "2"
         }
       ]
+    }
+  ],
+  "movie": [
+    {
+      "id": "3986750.618619439",
+      "name": "star trek",
+      "genero": "ciencia_ficcion",
+      "duracion": "234",
+      "edadPermitida": "16"
     },
     {
       "id": "7931477.568437282",

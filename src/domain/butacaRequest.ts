@@ -22,18 +22,19 @@ export interface BookingRequest {
 //Interfaces secundarias////
 ///////////////////////////
 
-//90%
+//ya esta
 export interface RoomRequest {
     id: string;
     name: string;
     number: string;
 }
 
+//ya esta
 export interface SeatRequest {
     id: string;
     number: string;
     row: string;
-    room: RoomRequest
+    room: RoomRequest[]
 }
 
 //ya esta

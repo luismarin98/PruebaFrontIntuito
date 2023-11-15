@@ -23,10 +23,7 @@ const SeatsList: FC = () => {
     setValue("id", data.id);
     setValue("number", data.number);
     setValue("row", data.row);
-
-    setValue("room.id", data.room.id);
-    setValue("room.name", data.room.name);
-    setValue("room.number", data.room.number);
+    setValue("room", data.room);
 
     setIsCloseModal(true);
     setIsEditModal(true);
@@ -46,10 +43,9 @@ const SeatsList: FC = () => {
     <table className="bg-white dark:bg-slate-800 rounded-lg ring-1 ring-slate-900/5 shadow-xl table-fixed sm:w-1/2 sm:p-2 md:w-3/4 md:p-2 lg:w-5/6 lg:p-2 xl:w-full xl:p-2">
       <thead>
         <tr className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
-          <th>Numero de sala</th>
+          <th>Silla</th>
           <th>Columna</th>
-          <th>Nombre de sala</th>
-          <th>Numero de sala</th>
+          <th>Pelicula y sala</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -61,9 +57,16 @@ const SeatsList: FC = () => {
           >
             <th>{data.number}</th>
             <th>{data.row}</th>
-            <th>{data.room.name}</th>
-            <th>{data.room.number}</th>
-            <th className="flex flex-row gap-2 p-1">
+            <th>
+              {
+                data.room?.map((room) => (
+                  <div key={room.id} className="flex flex-row gap-2 items-center justify-center">
+                    <p>{room.name} | Sala: {room.number}</p>
+                  </div>
+                ))
+              }
+            </th>
+            <th className="flex flex-row gap-2 p-1 items-center justify-center">
               <button
                 onClick={(e) => handle_EditBTN(e, data)}
                 className="shadow-md p-2 rounded-md bg-green-400 hover:bg-green-500 text-white dark:text-black"
