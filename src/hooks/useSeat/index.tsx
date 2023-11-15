@@ -11,20 +11,15 @@ const useSeat = () => {
   const queryRoom = `http://localhost:3000/room/`;
 
   const runEditSeat = async () => {
-    await axios
-      .put(`${query}?number=${number}`, { ...seat })
-      .then((res) => {
-        if (res.status === 201) return alert("Silla editada");
-      })
-      .catch(() => {
-        alert("Algo paso, intenta nuevamente");
-      });
+    const response = await axios.put(`${query}?number=${number}`, { ...seat });
+    if (response.statusText === 'OK') { alert('Silla editada con exito') }
+    else { alert('Algo paso intente nuevamente') }
   };
 
   const runSaveSeat = async (numberRoom: string) => {
     const getRoom = await axios.get<RoomRequest[]>(`${queryRoom}?number${numberRoom}`)
     setSeat((prev) => ({ ...prev!, room: getRoom.data }));
-    await axios.post(query, { ...seat }).then((res) => {
+    return await axios.post(query, { ...seat }).then((res) => {
       if (res.statusText === 'OK') return alert('Los datos del asiento se guardaron correctamente');
     })
   };
@@ -32,30 +27,15 @@ const useSeat = () => {
   const runFilterSeats = async () => {
     const response = await axios.get<SeatRequest[]>(`${query}${number !== "" ? `?number=${number}` : ""}`);
     const datoAjustado = response.data.map((prev) => ({ ...prev!, room: prev.room }));
-    if (response.statusText === 'OK') setSeatsList(datoAjustado);
-    /*     await axios
-          .get<SeatRequest[]>(`${query}${number !== "" ? `?number=${number}` : ""}`)
-          .then((res) => {
-            const response = res.data.map((seat) => ({ ...seat!, room: seat.room[0] }));
-            if (res.statusText === 'OK') { setSeatsList(response); }
-            else { alert('Algo paso en la obtencion de los datos') }
-            console.log(response)
-            number ? setNumber("") : null;
-          })
-          .catch(() => {
-            alert("Algo paso, intenta nuevamente");
-          }); */
+    if (response.statusText === 'OK') { setSeatsList(datoAjustado) }
+    else { alert('Algo paso intente nuevamente') }
+    number ? setNumber('') : null
   };
 
   const runDeleteSeat = async () => {
-    await axios
-      .delete(`${query}${seat?.id}`)
-      .then((res) => {
-        if (res.status === 200) return alert("Silla eliminada con exito");
-      })
-      .catch(() => {
-        alert("Algo paso, intente nuevamente");
-      });
+    const response = await axios.delete(`${query}${seat?.id}`);
+    if (response.statusText === 'OK') { alert('Silla eliminada del registro') }
+    else { alert('Algo paso intente nuevament') }
   };
 
   return {
