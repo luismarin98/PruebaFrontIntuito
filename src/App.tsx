@@ -18,7 +18,7 @@ function App() {
         <Route path="/customer" element={<CustomerContainer />} />
         <Route path="/rooms" element={<RoomContainer />} />
         <Route path="/seats" element={<SeatsContainer />} />
-        <Route path="/billboard" element={<BillboardContainer />} />
+        <Route path="/billboards" element={<BillboardContainer />} />
         <Route path="/bookings" element={<BookingContainer />} />
       </Routes>
     </div>

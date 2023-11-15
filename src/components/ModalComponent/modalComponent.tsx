@@ -68,7 +68,7 @@ const DialogComponent = ({
                   </svg>
                 </button>
               </Dialog.Title>
-              <div className="text-slate-500 dark:text-slate-400 mt-2 text-sm p-5">
+              <div className="text-slate-500 dark:text-slate-400 mt-2 text-sm p-1">
                 {children}
               </div>
             </div>
