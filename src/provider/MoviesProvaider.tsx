@@ -5,7 +5,7 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import useMovie from "../hooks/useMovie";
+import { useMovie } from "../hooks";
 import { MovieRequest } from "../domain/butacaRequest";
 
 export interface IMovieContext {

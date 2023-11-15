@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { RoomRequest } from "../domain/butacaRequest";
-import useRoom from "../hooks/useRoom";
+import { useRoom } from "../hooks";
 
 export interface IRoomContext {
   //Parametros de la pelicula

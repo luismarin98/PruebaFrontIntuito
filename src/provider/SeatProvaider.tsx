@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { SeatRequest } from "../domain/butacaRequest";
-import useSeat from "../hooks/useSeat";
+import { useSeat } from "../hooks";
 
 export interface ISeatContext {
   //Parametros de la pelicula

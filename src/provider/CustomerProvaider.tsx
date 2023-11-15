@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { CustomerRequest } from "../domain/butacaRequest";
-import useCustomer from "../hooks/useCustomer";
+import { useCustomer } from "../hooks";
 
 export interface ICustomerContext {
   //Parametros de la pelicula
