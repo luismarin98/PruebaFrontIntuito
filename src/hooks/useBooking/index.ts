@@ -8,10 +8,9 @@ import {
 import axios from "axios";
 
 const useBooking = () => {
-  const [bookingList, setBookingList] = useState<BookingRequest[] | undefined>(
-    []
-  );
+  const [bookingList, setBookingList] = useState<BookingRequest[] | undefined>([]);
   const [booking, setBooking] = useState<BookingRequest>();
+
   const [customer, setCustomer] = useState<CustomerRequest>();
   const [billboard, setBillboard] = useState<BillboardRequest>();
   const [seat, setSeat] = useState<SeatRequest>();
@@ -20,6 +19,12 @@ const useBooking = () => {
   const queryCustomer = `http://localhost:3000/customer/`;
   const querySeat = `http://localhost:3000/seat/`;
   const queryBillboard = `http://localhost:3000/billboard/`;
+
+  const run_getSeat = async (numero: string, sala: string) => {
+    const response = await axios.get<SeatRequest>(`${querySeat}?number=${numero}/room/?number=${sala}`);
+    if (response.data) { setSeat(response.data) }
+    else { alert('Algo paso, intente nuevamente') }
+  }
 
   const run_saveBook = async () => {
     const res_seat = await axios.get<SeatRequest>(`${querySeat}${seat?.id}`);

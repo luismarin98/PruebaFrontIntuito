@@ -15,8 +15,7 @@ const SaveBookingForm = () => {
     setIsCloseModal,
   } = useContext(BookingContext) as IBookingContext;
 
-  const { setValue, getValues, reset } =
-    useFormContext<BookingRequest>();
+  const { setValue, getValues, reset } = useFormContext<BookingRequest>();
 
   setValue("id", randomNumberBetween(0, 10000000).toString());
 
@@ -50,7 +49,7 @@ const SaveBookingForm = () => {
         <label className="flex flex-col gap-2 ring-2 ring-white p-2 rounded-md">
           <p>Escoger Pelicula</p>
           <select className="text-center p-1 rounded-md">
-{/*             {billboardData?.map((data) =>
+            {/*             {billboardData?.map((data) =>
               data.movie!.map((movie) => (
                 <option key={movie.id} value={movie.name}>
                   {movie.name}
