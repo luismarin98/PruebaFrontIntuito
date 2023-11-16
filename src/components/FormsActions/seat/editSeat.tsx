@@ -1,7 +1,7 @@
 import { useContext, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
-import { SeatRequest } from "../../domain/butacaRequest";
-import SeatContext, { ISeatContext } from "../../provider/SeatProvaider";
+import { SeatRequest } from "../../../domain/butacaRequest";
+import SeatContext, { ISeatContext } from "../../../provider/SeatProvaider";
 
 const EditSeatForm = () => {
   const { setSeat, runEditSeat, setIsEditModal, setIsCloseModal } = useContext(

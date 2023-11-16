@@ -1,7 +1,7 @@
 import { useContext, MouseEvent, useState, ChangeEvent } from "react";
 import { useFormContext } from "react-hook-form";
-import { SeatRequest } from "../../domain/butacaRequest";
-import SeatContext, { ISeatContext } from "../../provider/SeatProvaider";
+import { SeatRequest } from "../../../domain/butacaRequest";
+import SeatContext, { ISeatContext } from "../../../provider/SeatProvaider";
 
 const SaveSeatForm = () => {
   function randomNumberBetween(min: number, max: number): number {

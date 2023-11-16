@@ -6,7 +6,7 @@ import BookingContext, {
   IBookingContext,
 } from "../../provider/BookingProvaider";
 import moment from "moment";
-import SaveBookingForm from "../FormsActions/saveBooking";
+import SaveBookingForm from "../FormsActions/booking/saveBooking";
 
 const FormBooking = () => {
   const {

@@ -3,8 +3,8 @@ import { useContext, MouseEvent } from "react";
 import Roomcontext, { IRoomContext } from "../../provider/RoomProvaider";
 import DialogComponent from "../ModalComponent/modalComponent";
 import { RoomRequest } from "../../domain/butacaRequest";
-import SaveRoomForm from "../FormsActions/saveRoom";
-import EditRoomForm from "../FormsActions/editRoom";
+import SaveRoomForm from "../FormsActions/room/saveRoom";
+import EditRoomForm from "../FormsActions/room/editRoom";
 
 const FormRoom = () => {
   const {

@@ -1,7 +1,7 @@
 import { useContext, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
-import { RoomRequest } from "../../domain/butacaRequest";
-import Roomcontext, { IRoomContext } from "../../provider/RoomProvaider";
+import { RoomRequest } from "../../../domain/butacaRequest";
+import Roomcontext, { IRoomContext } from "../../../provider/RoomProvaider";
 
 const EditRoomForm = () => {
   const { runEditRoom, setRoom, setIsCloseModal, setIsEditModal } =

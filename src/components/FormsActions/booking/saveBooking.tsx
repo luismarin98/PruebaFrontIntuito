@@ -1,9 +1,9 @@
 import { useContext, MouseEvent, ChangeEvent, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { BookingRequest } from "../../domain/butacaRequest";
+import { BookingRequest } from "../../../domain/butacaRequest";
 import BookingContext, {
   IBookingContext,
-} from "../../provider/BookingProvaider";
+} from "../../../provider/BookingProvaider";
 
 const SaveBookingForm = () => {
   function randomNumberBetween(min: number, max: number): number {
@@ -16,12 +16,10 @@ const SaveBookingForm = () => {
     setDocument,
     setIsCloseModal,
     runSaveBookking,
-    setDateBillboard,
-    runGetBillboard,
     billboardData,
   } = useContext(BookingContext) as IBookingContext;
 
-  const { setValue, getValues, reset, register } =
+  const { setValue, getValues, reset } =
     useFormContext<BookingRequest>();
 
   setValue("id", randomNumberBetween(0, 10000000).toString());
@@ -47,7 +45,7 @@ const SaveBookingForm = () => {
     reset();
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   return (
     <form className="flex flex-col p-5 gap-2 items-center">
@@ -64,7 +62,7 @@ const SaveBookingForm = () => {
         </label>
         <label className="flex flex-col gap-2 ring-2 ring-white p-2 rounded-md">
           <p>Escoger Pelicula</p>
-          <select className="text-center p-1 rounded-md">
+{/*           <select className="text-center p-1 rounded-md">
             {billboardData?.map((data) =>
               data.movie!.map((movie) => (
                 <option key={movie.id} value={movie.name}>
@@ -72,7 +70,7 @@ const SaveBookingForm = () => {
                 </option>
               ))
             )}
-          </select>
+          </select> */}
         </label>
         <label className="flex flex-col gap-2 ring-2 ring-white p-2 rounded-md">
           <p>Documento del cliente</p>

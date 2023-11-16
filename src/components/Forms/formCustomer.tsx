@@ -5,8 +5,8 @@ import DialogComponent from "../ModalComponent/modalComponent";
 import CustomerContext, {
   ICustomerContext,
 } from "../../provider/CustomerProvaider";
-import EditCustomerForm from "../FormsActions/editCustomer";
-import SaveCustomerform from "../FormsActions/saveCustomer";
+import EditCustomerForm from "../FormsActions/customer/editCustomer";
+import SaveCustomerform from "../FormsActions/customer/saveCustomer";
 
 const FormCustomer = () => {
   const {

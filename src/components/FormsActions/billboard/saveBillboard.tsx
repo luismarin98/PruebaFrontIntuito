@@ -1,12 +1,26 @@
-import { useContext, MouseEvent, ChangeEvent } from "react";
+import { useContext, MouseEvent, ChangeEvent, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { BillboardRequest } from "../../domain/butacaRequest";
-import BillboardContext, { IBillboardContext } from "../../provider/BillboardProvaider";
+import { BillboardRequest } from "../../../domain/butacaRequest";
+import BillboardContext, { IBillboardContext } from "../../../provider/BillboardProvaider";
 import moment from "moment";
 
-const EditBillboard = () => {
-    const { setBillboard, runEditBillboard, setIsEditModal, setIsCloseModal, room, movie } = useContext(BillboardContext) as IBillboardContext;
-    const { setValue, getValues, reset } = useFormContext<BillboardRequest>()
+const SaveBillboard = () => {
+    function randomNumberBetween(min: number, max: number): number {
+        return Math.random() * (max - min) + min;
+    }
+
+    const {
+        runSaveBillboard,
+        setBillboard,
+        setIsCloseModal,
+        movie,
+        room,
+        getMovie,
+        getRoom
+    } = useContext(BillboardContext) as IBillboardContext;
+    const { setValue, getValues, reset } = useFormContext<BillboardRequest>();
+
+    setValue("id", randomNumberBetween(0, 10000000).toString());
 
     const handle_horaInicio = (event: ChangeEvent<HTMLInputElement>) => {
         setValue('starttime', event.target.value);
@@ -28,19 +42,22 @@ const EditBillboard = () => {
         setValue('movie', movie!.filter((m) => m.name === event.target.value)[0])
     }
 
-    const handle_edit = (event: MouseEvent<HTMLButtonElement>) => {
+    const handle_save = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         const valueParams = { ...getValues() };
-        if (!valueParams) return alert(
-            "Asegurese de no dejar ningun campo vacio, esto puede generar errores en la base de datos, gracias!"
-        );
+        if (!valueParams.date || !valueParams.endTime || !valueParams.starttime || !valueParams.movie || !valueParams.room) return alert("Asegurate de rellenar todos los campos correspondientes");
 
-        setBillboard(valueParams);
-        runEditBillboard();
         setIsCloseModal(false);
-        setIsEditModal(false);
+        setBillboard(valueParams);
+        setIsCloseModal(false);
+        runSaveBillboard();
         reset();
     }
+
+    useEffect(() => {
+        getMovie();
+        getRoom();
+    }, [])
 
     return (
         <form className="flex flex-row flex-wrap gap-2">
@@ -59,9 +76,9 @@ const EditBillboard = () => {
             <input type="time" onChange={handle_horaInicio} placeholder="Hora inicio" className="p-2 rounded-md text-center" />
             <input type="time" onChange={handle_horaFin} placeholder="Hora fin" className="p-2 rounded-md text-center" />
             <input type="date" onChange={handle_change} className="p-2 rounded-md text-center" />
-            <button className="p-1 bg-slate-100 rounded-lg text-black" onClick={handle_edit}>Editar cartelera</button>
+            <button className="p-1 bg-slate-100 rounded-lg text-black" onClick={handle_save}>Guardar cartelera</button>
         </form>
     )
 }
 
-export default EditBillboard;
+export default SaveBillboard;

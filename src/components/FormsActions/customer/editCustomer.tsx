@@ -2,8 +2,8 @@ import { useContext, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import CustomerContext, {
   ICustomerContext,
-} from "../../provider/CustomerProvaider";
-import { CustomerRequest } from "../../domain/butacaRequest";
+} from "../../../provider/CustomerProvaider";
+import { CustomerRequest } from "../../../domain/butacaRequest";
 
 const EditCustomerForm = () => {
   const {

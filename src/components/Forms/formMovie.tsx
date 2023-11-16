@@ -1,8 +1,8 @@
 import { useContext, MouseEvent, ChangeEvent } from "react";
 import MovieContext, { IMovieContext } from "../../provider/MoviesProvaider";
-import SaveMovieForm from "../FormsActions/saveMovieForm";
+import SaveMovieForm from "../FormsActions/movie/saveMovieForm";
 import DialogComponent from "../ModalComponent/modalComponent";
-import EditMovieForm from "../FormsActions/editMovieForm";
+import EditMovieForm from "../FormsActions/movie/editMovieForm";
 import { useFormContext } from "react-hook-form";
 import { MovieRequest } from "../../domain/butacaRequest";
 

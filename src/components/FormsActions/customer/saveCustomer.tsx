@@ -2,8 +2,8 @@ import { useContext, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import CustomerContext, {
   ICustomerContext,
-} from "../../provider/CustomerProvaider";
-import { CustomerRequest } from "../../domain/butacaRequest";
+} from "../../../provider/CustomerProvaider";
+import { CustomerRequest } from "../../../domain/butacaRequest";
 
 const SaveCustomerform = () => {
   function randomNumberBetween(min: number, max: number): number {

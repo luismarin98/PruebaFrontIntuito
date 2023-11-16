@@ -3,8 +3,8 @@ import { useFormContext } from "react-hook-form";
 import { SeatRequest } from "../../domain/butacaRequest";
 import DialogComponent from "../ModalComponent/modalComponent";
 import SeatContext, { ISeatContext } from "../../provider/SeatProvaider";
-import EditSeatForm from "../FormsActions/editSeat";
-import SaveSeatForm from "../FormsActions/saveSeat";
+import EditSeatForm from "../FormsActions/seat/editSeat";
+import SaveSeatForm from "../FormsActions/seat/saveSeat";
 
 const FormSeat = () => {
   const {

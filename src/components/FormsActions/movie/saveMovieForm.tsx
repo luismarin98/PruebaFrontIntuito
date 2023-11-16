@@ -1,7 +1,7 @@
 import { useContext, ChangeEvent, MouseEvent } from "react";
 import { useFormContext } from "react-hook-form";
-import MovieContext, { IMovieContext } from "../../provider/MoviesProvaider";
-import { MovieRequest } from "../../domain/butacaRequest";
+import MovieContext, { IMovieContext } from "../../../provider/MoviesProvaider";
+import { MovieRequest } from "../../../domain/butacaRequest";
 
 const generos = [
   {

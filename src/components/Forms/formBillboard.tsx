@@ -6,8 +6,8 @@ import BillboardContext, {
   IBillboardContext,
 } from "../../provider/BillboardProvaider";
 import moment from "moment";
-import SaveBillboard from "../FormsActions/saveBillboard";
-import EditBillboard from "../FormsActions/editBillboard";
+import SaveBillboard from "../FormsActions/billboard/saveBillboard";
+import EditBillboard from "../FormsActions/billboard/editBillboard";
 
 const FormBillboard = () => {
   const {
