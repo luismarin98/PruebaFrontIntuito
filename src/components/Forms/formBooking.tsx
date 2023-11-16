@@ -14,8 +14,6 @@ const FormBooking = () => {
     setIsCloseModal,
     setIsEditModal,
     isEditModal,
-    runGetBookingList,
-    setDateBook,
   } = useContext(BookingContext) as IBookingContext;
   const { reset, register, getValues } = useFormContext<BookingRequest>();
 
@@ -29,9 +27,7 @@ const FormBooking = () => {
   const handle_ShowCustomers = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const valueParam = { ...getValues() };
-    if (valueParam?.date !== "")
-      setDateBook(moment(valueParam?.date).format("DD/MM/YYYY"));
-    runGetBookingList();
+    if (valueParam?.date !== "") { alert('Asegurate de llenar todos los campos porfavor') }
     reset();
   };
 

@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { useBooking } from "../hooks";
-import { BillboardRequest, BookingRequest } from "../domain/butacaRequest";
+import { BillboardRequest, BookingRequest, CustomerRequest, SeatRequest } from "../domain/butacaRequest";
 
 export interface IBookingContext {
   //Parametros de accion del modal
@@ -17,19 +17,16 @@ export interface IBookingContext {
   setIsEditModal: Dispatch<SetStateAction<boolean>>;
 
   bookingList: BookingRequest[] | undefined;
-  billboardData: BillboardRequest[] | undefined;
+  get_ListBookings: () => Promise<void>;
 
+  run_deleteBook: () => Promise<void>;
+  run_editBook: () => Promise<void>;
+  run_saveBook: () => Promise<void>;
+
+  setBillboard: Dispatch<SetStateAction<BillboardRequest | undefined>>;
   setBooking: Dispatch<SetStateAction<BookingRequest | undefined>>;
-  setDateBillboard: Dispatch<SetStateAction<string>>;
-  setDateBook: Dispatch<SetStateAction<string>>;
-  setDocument: Dispatch<SetStateAction<string>>;
-  setSeatNumber: Dispatch<SetStateAction<string>>;
-
-  runDeleteBooking: () => Promise<void>;
-  runEditBooking: () => Promise<void>;
-  runGetBookingList: () => Promise<void>;
-  runSaveBookking: () => Promise<void>;
-  runGetBillboard: () => Promise<void>;
+  setCustomer: Dispatch<SetStateAction<CustomerRequest | undefined>>;
+  setSeat: Dispatch<SetStateAction<SeatRequest | undefined>>;
 }
 
 const BookingContext = createContext({});
@@ -40,36 +37,30 @@ export const BookingProvaider = ({ children }: { children: ReactNode }) => {
 
   const {
     bookingList,
-    runDeleteBooking,
-    runEditBooking,
-    runGetBookingList,
-    runSaveBookking,
+    get_ListBookings,
+    run_deleteBook,
+    run_editBook,
+    run_saveBook,
+    setBillboard,
     setBooking,
-    setDateBillboard,
-    setDateBook,
-    setDocument,
-    setSeatNumber,
-    billboardData,
-    runGetBillboard,
+    setCustomer,
+    setSeat
   } = useBooking();
 
   const storage: IBookingContext = {
+    bookingList,
+    get_ListBookings,
+    run_deleteBook,
+    run_editBook,
+    run_saveBook,
+    setBillboard,
+    setBooking,
+    setCustomer,
+    setSeat,
     isOpenModal,
     setIsCloseModal,
     isEditModal,
-    setIsEditModal,
-    setBooking,
-    setDateBillboard,
-    setDateBook,
-    setDocument,
-    setSeatNumber,
-    bookingList,
-    runDeleteBooking,
-    runEditBooking,
-    runGetBookingList,
-    runSaveBookking,
-    billboardData,
-    runGetBillboard,
+    setIsEditModal
   };
 
   return (

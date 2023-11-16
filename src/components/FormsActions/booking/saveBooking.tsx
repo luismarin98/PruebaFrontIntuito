@@ -12,25 +12,13 @@ const SaveBookingForm = () => {
 
   const {
     setBooking,
-    setSeatNumber,
-    setDocument,
     setIsCloseModal,
-    runSaveBookking,
-    billboardData,
   } = useContext(BookingContext) as IBookingContext;
 
   const { setValue, getValues, reset } =
     useFormContext<BookingRequest>();
 
   setValue("id", randomNumberBetween(0, 10000000).toString());
-
-  const handle_DocChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setDocument(event.target.value);
-  };
-
-  const handle_SeatChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSeatNumber(event.target.value);
-  };
 
   const handle_save = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -41,7 +29,6 @@ const SaveBookingForm = () => {
       );
     setBooking(valueParams);
     setIsCloseModal(false);
-    runSaveBookking();
     reset();
   };
 
@@ -52,32 +39,32 @@ const SaveBookingForm = () => {
       <div className="flex flex-row flex-wrap gap-4">
         <label className="flex flex-col gap-2 ring-2 ring-white p-2 rounded-md">
           <p>Escoger fecha</p>
-          <select className="text-center p-1 rounded-md">
+          {/* <select className="text-center p-1 rounded-md">
             {billboardData?.map((data) => (
               <option key={data.id} value={data.date}>
                 {data.date}
               </option>
             ))}
-          </select>
+          </select> */}
         </label>
         <label className="flex flex-col gap-2 ring-2 ring-white p-2 rounded-md">
           <p>Escoger Pelicula</p>
-{/*           <select className="text-center p-1 rounded-md">
-            {billboardData?.map((data) =>
+          <select className="text-center p-1 rounded-md">
+{/*             {billboardData?.map((data) =>
               data.movie!.map((movie) => (
                 <option key={movie.id} value={movie.name}>
                   {movie.name}
                 </option>
               ))
-            )}
-          </select> */}
+            )} */}
+          </select>
         </label>
         <label className="flex flex-col gap-2 ring-2 ring-white p-2 rounded-md">
           <p>Documento del cliente</p>
           <input
             type="text"
             placeholder="Documento del cliente"
-            onChange={handle_DocChange}
+            /* onChange={handle_DocChange} */
             className="p-1 bg-slate-300 rounded-md text-black text-center"
           />
         </label>
@@ -86,7 +73,7 @@ const SaveBookingForm = () => {
           <input
             type="text"
             placeholder="Silla de la sala"
-            onChange={handle_SeatChange}
+            /* onChange={handle_SeatChange} */
             className="p-1 bg-slate-300 rounded-md text-black text-center"
           />
         </label>
