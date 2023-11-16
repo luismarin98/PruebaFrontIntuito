@@ -1,5 +1,24 @@
 {
-  "billboard": [],
+  "billboard": [
+    {
+      "date": "16/11/2023",
+      "endTime": "02:41",
+      "id": "5893626.0831324505",
+      "movie": {
+        "id": "7931477.568437282",
+        "name": "La momia",
+        "genero": "horror",
+        "duracion": "240",
+        "edadPermitida": "18"
+      },
+      "room": {
+        "id": "8463367.591781199",
+        "name": "La momia",
+        "number": "3"
+      },
+      "starttime": "01:41"
+    }
+  ],
   "booking": [],
   "room": [
     {

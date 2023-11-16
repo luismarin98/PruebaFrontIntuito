@@ -20,18 +20,10 @@ const useBooking = () => {
   const [seatNumber, setSeatNumber] = useState<string>("");
   const [dateBillBoard, setDateBillboard] = useState<string>("");
 
-  const query = `http://localhost:3000/booking/${
-    dateBook ? `?date=${dateBook}` : ""
-  }`;
-  const customerQuery = `http://localhost:3000/customer/?document=${
-    document ? document : ""
-  }`;
-  const seatQuery = `http://localhost:3000/seat/?number=${
-    seatNumber ? seatNumber : ""
-  }`;
-  const billboardQuery = `http://localhost:3000/billboard/?date=${
-    dateBillBoard ? dateBillBoard : ""
-  }`;
+  const query = `http://localhost:3000/booking/${dateBook ? `?date=${dateBook}` : ""}`;
+  const customerQuery = `http://localhost:3000/customer/?document=${document ? document : ""}`;
+  const seatQuery = `http://localhost:3000/seat/?number=${seatNumber ? seatNumber : ""}`;
+  const billboardQuery = `http://localhost:3000/billboard/?date=${dateBillBoard ? dateBillBoard : ""}`;
 
   const runEditBooking = async () => {
     const response = await axios.put(query, { ...booking });
@@ -45,15 +37,13 @@ const useBooking = () => {
   const runSaveBookking = async () => {
     const responseCustomer = await axios.get<CustomerRequest[]>(customerQuery);
     const responseSeat = await axios.get<SeatRequest[]>(seatQuery);
-    const responseBillboard = await axios.get<BillboardRequest[]>(
-      billboardQuery
-    );
+    const responseBillboard = await axios.get<BillboardRequest[]>(billboardQuery);
 
     setBooking((prev) => ({
       ...prev!,
-      customer: responseCustomer.data,
-      seat: responseSeat.data,
-      billboard: responseBillboard.data,
+      customer: responseCustomer.data[0],
+      seat: responseSeat.data[0],
+      billboard: responseBillboard.data[0],
     }));
 
     const response = await axios.post(query, { ...booking });
@@ -91,10 +81,8 @@ const useBooking = () => {
 
   const runGetBillboard = async () => {
     const response = await axios.get(billboardQuery);
-    if (response.statusText === "OK") setBillboardData(response.data);
-    else {
-      alert("Algo paso, intente nuevament");
-    }
+    if (response.statusText === "OK") { setBillboardData(response.data) }
+    else { alert("Algo paso, intente nuevament") }
   };
 
   return {

@@ -5,44 +5,48 @@ import axios from "axios";
 const useBillboard = () => {
     const [billboardList, setBillboardList] = useState<BillboardRequest[]>([]);
     const [billboard, setBillboard] = useState<BillboardRequest>();
+    const [movie, setMovie] = useState<MovieRequest[]>([]);
+    const [room, setRoom] = useState<RoomRequest[]>([]);
 
     const [dateBillboard, setDateBillboard] = useState<string>('');
-    const [nameMovie, setNameMovie] = useState<string>('');
-    const [roomNumber, setRoomNumber] = useState<string>('');
 
-    const query = `http://localhost:3000/billboard/?date=${dateBillboard ? dateBillboard : ''}`;
-    const movieQuery = `http://localhost:3000/movie/${nameMovie ? `?name=${nameMovie}` : ''}`;
-    const roomQuery = `http://localhost:3000/room/${roomNumber ? `?number=${roomNumber}` : ''}`;
+    const query = `http://localhost:3000/billboard/`;
 
     const runEditBillboard = async () => {
-        const response = await axios.put(query, { ...billboard });
-        if (response.statusText === 'OK') { alert('Reserva editada con exito') }
+        const response = await axios.put(`${query}${billboard?.id}`, { ...billboard });
+        if (response.status === 201) { alert('Reserva editada con exito') }
         else { alert('Algo paso intente nuevamente') }
     }
 
     const runSaveBillboard = async () => {
-        const responseMovie = await axios.get<MovieRequest[]>(movieQuery);
-        const responseRoom = await axios.get<RoomRequest[]>(roomQuery);
-
-        setBillboard((prev) => ({ ...prev!, movie: responseMovie.data, room: responseRoom.data }));
-
         const response = await axios.post(query, { ...billboard });
-        if (response.statusText === 'OK') { alert('Reserva guardada con exito') }
+        if (response.status === 201) { alert('Reserva guardada con exito') }
         else { alert('Algo paso, intente nuevamente') }
     }
 
     const runGetBillboardList = async () => {
         const response = await axios.get<BillboardRequest[]>(query);
-        const datosAjustados = response.data.map((prev) => ({ ...prev!, movie: prev.movie, room: prev.room }));
-        if (response.statusText === 'OK') { setBillboardList(datosAjustados) }
+        if (response.status === 200) { setBillboardList(response.data) }
         else { alert('Algo paso, intente nuevamente') }
         dateBillboard ? setDateBillboard('') : null;
     }
 
     const runDeleteBillboard = async () => {
-        const response = await axios.delete(query);
-        if (response.statusText === 'OK') { alert('Reserva eliminada del registro') }
+        const response = await axios.delete(`${query}${billboard?.id}`);
+        if (response.status === 200) { alert('Reserva eliminada del registro') }
         else { alert('Algo paso, intente nuevament') }
+    }
+
+    const getMovie = async () => {
+        const response = await axios.get<MovieRequest[]>(`http://localhost:3000/movie/`);
+        if (response.status === 404) { alert('No se encontro esta pelicula') }
+        else { setMovie(response.data) }
+    }
+
+    const getRoom = async () => {
+        const response = await axios.get<RoomRequest[]>(`http://localhost:3000/room/`);
+        if (response.status === 404) { alert('No se encontro esta pelicula') }
+        else { setRoom(response.data) }
     }
 
     return {
@@ -51,9 +55,12 @@ const useBillboard = () => {
         runGetBillboardList,
         runSaveBillboard,
         setDateBillboard,
-        setRoomNumber,
-        setNameMovie,
-        billboardList
+        billboardList,
+        setBillboard,
+        movie,
+        room,
+        getMovie,
+        getRoom,
     }
 }
 

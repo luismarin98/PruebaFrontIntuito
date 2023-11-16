@@ -6,6 +6,8 @@ import BillboardContext, {
   IBillboardContext,
 } from "../../provider/BillboardProvaider";
 import moment from "moment";
+import SaveBillboard from "../FormsActions/saveBillboard";
+import EditBillboard from "../FormsActions/editBillboard";
 
 const FormBillboard = () => {
   const {
@@ -26,11 +28,10 @@ const FormBillboard = () => {
     reset();
   };
 
-  const handle_ShowCustomers = (event: MouseEvent<HTMLButtonElement>) => {
+  const handle_showBillboards = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const valueParam = { ...getValues() };
-    if (valueParam?.date !== "")
-      setDateBillboard(moment(valueParam?.date).format("DD/MM/YYYY"));
+    if (valueParam?.date !== "") setDateBillboard(moment(valueParam?.date).format("DD/MM/YYYY"));
     runGetBillboardList();
     reset();
   };
@@ -46,7 +47,7 @@ const FormBillboard = () => {
         </button>
         <button
           className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-lg p-2"
-          onClick={handle_ShowCustomers}
+          onClick={handle_showBillboards}
         >
           Mostrar carteleras
         </button>
@@ -62,7 +63,8 @@ const FormBillboard = () => {
         onClose={setIsCloseModal}
         title={isEditModal ? "Editar cartelera" : "Guardar cartelera"}
       >
-        Hola carteleras
+        {isEditModal ? <EditBillboard /> : <SaveBillboard />}
+
       </DialogComponent>
     </>
   );

@@ -7,8 +7,8 @@ export interface BillboardRequest {
     date: string;
     starttime: string;
     endTime: string;
-    movie: MovieRequest[];
-    room: RoomRequest[];
+    movie: MovieRequest;
+    room: RoomRequest;
 }
 
 export interface BookingRequest {

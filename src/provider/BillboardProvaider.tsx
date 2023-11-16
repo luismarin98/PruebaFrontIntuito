@@ -6,7 +6,7 @@ import {
     useState,
 } from "react";
 import { useBillboard } from "../hooks";
-import { BillboardRequest } from "../domain/butacaRequest";
+import { BillboardRequest, MovieRequest, RoomRequest } from "../domain/butacaRequest";
 
 export interface IBillboardContext {
     //Parametros de accion del modal
@@ -17,15 +17,19 @@ export interface IBillboardContext {
     setIsEditModal: Dispatch<SetStateAction<boolean>>;
 
     setDateBillboard: Dispatch<SetStateAction<string>>;
-    setNameMovie: Dispatch<SetStateAction<string>>;
-    setRoomNumber: Dispatch<SetStateAction<string>>;
+    setBillboard: Dispatch<SetStateAction<BillboardRequest | undefined>>;
 
     billboardList: BillboardRequest[];
+    room: RoomRequest[] | undefined;
+    movie: MovieRequest[] | undefined
 
     runDeleteBillboard: () => Promise<void>;
     runEditBillboard: () => Promise<void>;
     runGetBillboardList: () => Promise<void>;
     runSaveBillboard: () => Promise<void>;
+
+    getRoom: () => Promise<void>;
+    getMovie: () => Promise<void>;
 }
 
 const BillboardContext = createContext({});
@@ -41,8 +45,11 @@ export const BillboardProvaider = ({ children }: { children: ReactNode }) => {
         runGetBillboardList,
         runSaveBillboard,
         setDateBillboard,
-        setNameMovie,
-        setRoomNumber
+        setBillboard,
+        getMovie,
+        getRoom,
+        movie,
+        room
     } = useBillboard();
 
     const storage: IBillboardContext = {
@@ -51,13 +58,16 @@ export const BillboardProvaider = ({ children }: { children: ReactNode }) => {
         isEditModal,
         setIsEditModal,
         setDateBillboard,
-        setNameMovie,
-        setRoomNumber,
         billboardList,
         runDeleteBillboard,
         runEditBillboard,
         runGetBillboardList,
         runSaveBillboard,
+        setBillboard,
+        getMovie,
+        getRoom,
+        movie,
+        room
     }
 
     return (
