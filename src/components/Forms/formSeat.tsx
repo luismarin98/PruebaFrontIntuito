@@ -35,7 +35,7 @@ const FormSeat = () => {
 
   return (
     <>
-      <form className="flex flex-row gap-2">
+      <form className="flex flex-row gap-2 flex-wrap items-center justify-center">
         <button
           className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-lg p-2"
           onClick={handle_OpenCloseModal}

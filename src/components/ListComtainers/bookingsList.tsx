@@ -11,8 +11,8 @@ const BookingList: FC = () => {
     setIsCloseModal,
     setIsEditModal,
     setBooking,
-    runDeleteBooking,
-    runGetBookingList,
+    /* runDeleteBooking,
+    runGetBookingList, */
   } = useContext(BookingContext) as IBookingContext;
 
   const { setValue } = useFormContext<BookingRequest>();
@@ -40,8 +40,8 @@ const BookingList: FC = () => {
     event.preventDefault();
     //setDocumento(data.id);
     setBooking(data);
-    runDeleteBooking();
-    runGetBookingList();
+    /* runDeleteBooking();
+    runGetBookingList(); */
   };
 
   return bookingList!.length > 0 ? (

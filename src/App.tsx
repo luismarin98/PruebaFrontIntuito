@@ -11,7 +11,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="m-2">
+    <div>
       <Navbar />
       <Routes>
         <Route path="/movies" element={<MovieContainer />} />
